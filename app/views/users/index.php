@@ -7,18 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* Oceanic theme */
         body {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background: linear-gradient(135deg, #012a4a 0%, #0077b6 50%, #00b4d8 100%);
             background-attachment: fixed;
         }
         .glass-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: rgba(5, 64, 91, 0.18);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 10px 30px rgba(2, 35, 49, 0.45);
         }
         .table-bg {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(2, 57, 80, 0.06);
+        }
+        .badge-sea {
+            background: linear-gradient(90deg,#0096c7,#00b4d8);
+            color: #012a4a;
         }
     </style>
 </head>
@@ -62,12 +67,12 @@
                 <tbody class="text-sm">
                     <?php if (!empty($users) && is_array($users)): ?>
                         <?php foreach($users as $user): ?>
-                            <tr class="hover:bg-white hover:bg-opacity-5 transition duration-200">
+                            <tr class="hover:bg-white hover:bg-opacity-3 transition duration-200">
                                 <td class="py-4 px-4 font-medium"><?=($user['id']);?></td>
                                 <td class="py-4 px-4"><?=($user['lname']);?></td>
                                 <td class="py-4 px-4"><?=($user['fname']);?></td>
                                 <td class="py-4 px-4">
-                                    <span class="bg-cyan-500 bg-opacity-50 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                                    <span class="badge-sea text-xs font-semibold px-3 py-1 rounded-full">
                                         <?=($user['email']);?>
                                     </span>
                                 </td>
@@ -81,15 +86,15 @@
                                     ?>
                                     <?php if ($role === 'admin'): ?>
                                     <a href="<?= $update_url; ?>"
-                                        class="text-green-300 hover:text-green-500 transition-colors" title="Update">
+                                        class="text-cyan-200 hover:text-white transition-colors" title="Update">
                                         <i class="fa-solid fa-pen-to-square text-lg"></i>
                                     </a>
                                     <a href="<?= $delete_url; ?>"
-                                        class="text-red-300 hover:text-red-500 transition-colors" title="Delete">
+                                        class="text-rose-300 hover:text-rose-500 transition-colors" title="Delete">
                                         <i class="fa-solid fa-trash text-lg"></i>
                                     </a>
                                     <?php else: ?>
-                                    <span class="text-gray-300 text-xs italic">Restricted</span>
+                                    <span class="text-sky-100 text-xs italic">Restricted</span>
                                     <?php endif; ?>
                                 </td>
                             </tr>

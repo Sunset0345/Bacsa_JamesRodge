@@ -6,14 +6,14 @@
     <title>Admin - Users</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen p-8">
+<body class="min-h-screen p-8" style="background: linear-gradient(135deg,#012a4a 0%, #0077b6 50%, #00b4d8 100%); color: #e6f7ff;">
     <div class="max-w-6xl mx-auto">
         <h1 class="text-3xl font-bold mb-6">Admin - Users</h1>
-        <div class="bg-gray-800 p-6 rounded-lg shadow">
+        <div style="background: rgba(3,57,80,0.16); padding:1.5rem; border-radius:0.5rem; box-shadow:0 10px 30px rgba(2,35,49,0.45); border:1px solid rgba(255,255,255,0.04);">
             <div class="flex justify-between items-center mb-4">
                 <?php $page_q = isset($_GET['page']) ? '?page='.(int)$_GET['page'] : ''; ?>
                 <?php if (isset($_GET['q']) && $_GET['q'] !== '') { $page_q = '?q=' . urlencode($_GET['q']) . (isset($_GET['page']) ? '&page='.(int)$_GET['page'] : ''); } ?>
-                <a href="<?= site_url('') . $page_q ?>" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded text-sm">
+                <a href="<?= site_url('') . $page_q ?>" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-400 hover:from-blue-500 rounded text-sm text-white">
                     <i class="fa-solid fa-arrow-left"></i> Back to Users
                 </a>
                 <div></div>

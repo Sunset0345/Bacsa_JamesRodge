@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Update User - Glassmorphism</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      background-attachment: fixed;
-    }
-    .glass-container {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    body { background: linear-gradient(135deg,#012a4a 0%, #0077b6 50%, #00b4d8 100%); }
+    .glass-container { background: rgba(3,57,80,0.16); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 10px 30px rgba(2,35,49,0.45); }
+    .badge-sea { background: linear-gradient(90deg,#0096c7,#00b4d8); color:#012a4a; }
+  </style>
     }
     .table-bg {
       background: rgba(255, 255, 255, 0.05);
@@ -53,12 +42,12 @@
       <div class="w-full flex justify-center py-8">
         <div class="w-full max-w-2xl bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-gray-700">
           <div class="flex items-center gap-4 mb-4">
-            <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full p-3 shadow-md">
+            <div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full p-3 shadow-md">
               <i class="fa-solid fa-user-pen text-white text-2xl"></i>
             </div>
             <div>
               <h2 class="text-2xl font-bold text-white">Update User</h2>
-              <p class="text-gray-400 text-sm">Edit user details. Leave password blank to keep current password.</p>
+              <p class="text-sky-200 text-sm">Edit user details. Leave password blank to keep current password.</p>
             </div>
           </div>
 
@@ -93,7 +82,7 @@
 
             <div class="flex gap-3 items-center">
               <button type="submit"
-                  class="flex-1 bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-black font-semibold py-3 rounded-xl shadow-lg transition duration-200">
+                  class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-400 hover:from-blue-500 hover:to-sky-500 text-white font-semibold py-3 rounded-xl shadow-lg transition duration-200">
                 <i class="fa-solid fa-save mr-2"></i> Update Now
               </button>
 

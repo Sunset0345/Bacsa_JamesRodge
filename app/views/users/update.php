@@ -53,44 +53,69 @@
 
           <?php $current_page = isset($_GET['page']) ? (int) $_GET['page'] : 1; ?>
           <?php $q_param = isset($q) ? $q : ''; ?>
-          <form action="<?=site_url('index.php/users/update/'.$user['id'])?>" method="POST" class="space-y-5">
+          <form action="<?=site_url('index.php/users/update/'.$user['id'])?>" method="POST">
             <input type="hidden" name="page" value="<?= $current_page ?>">
 
-            <div>
-              <label class="block text-gray-300 mb-1 font-medium">First Name</label>
-              <input type="text" name="fname" value="<?= html_escape($user['fname'])?>" required
-                   class="w-full px-4 py-3 bg-black/30 text-gray-200 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm transition duration-200">
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Left: Avatar / Info -->
+              <div class="md:col-span-1 flex flex-col items-center text-center">
+                <div class="w-32 h-32 rounded-full flex items-center justify-center text-4xl font-bold text-white" style="background:linear-gradient(90deg,#0077b6,#00b4d8)">
+                  <?= strtoupper(substr(($user['fname'] ?? 'U'),0,1) . substr(($user['lname'] ?? ''),0,1)) ?>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-white"><?= htmlspecialchars(($user['fname'] ?? '') . ' ' . ($user['lname'] ?? '')) ?></h3>
+                <p class="text-sky-100 text-sm">ID: <?= $user['id'] ?></p>
+                <p class="mt-2 text-sm text-sky-200">Edit profile details and update the account information.</p>
+              </div>
 
-            <div>
-              <label class="block text-gray-300 mb-1 font-medium">Last Name</label>
-              <input type="text" name="lname" value="<?= html_escape($user['lname'])?>" required
-                   class="w-full px-4 py-3 bg-black/30 text-gray-200 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm transition duration-200">
-            </div>
+              <!-- Right: Form fields -->
+              <div class="md:col-span-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sky-100 mb-1 font-medium">First Name</label>
+                    <div class="relative">
+                      <span class="absolute left-3 top-3 text-sky-300"><i class="fa-solid fa-user"></i></span>
+                      <input type="text" name="fname" value="<?= html_escape($user['fname'])?>" required
+                           class="pl-10 w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
+                    </div>
+                  </div>
 
-            <div>
-              <label class="block text-gray-300 mb-1 font-medium">Email Address</label>
-              <input type="email" name="email" value="<?= html_escape($user['email'])?>" required
-                   class="w-full px-4 py-3 bg-black/30 text-gray-200 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm transition duration-200">
-            </div>
+                  <div>
+                    <label class="block text-sky-100 mb-1 font-medium">Last Name</label>
+                    <div class="relative">
+                      <span class="absolute left-3 top-3 text-sky-300"><i class="fa-solid fa-user"></i></span>
+                      <input type="text" name="lname" value="<?= html_escape($user['lname'])?>" required
+                           class="pl-10 w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
+                    </div>
+                  </div>
+                </div>
 
-            <div>
-              <label class="block text-gray-300 mb-1 font-medium">Password (leave blank to keep current)</label>
-              <input type="password" name="password" value=""
-                   class="w-full px-4 py-3 bg-black/30 text-gray-200 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm transition duration-200">
-            </div>
+                <div class="mt-4">
+                  <label class="block text-sky-100 mb-1 font-medium">Email Address</label>
+                  <div class="relative">
+                    <span class="absolute left-3 top-3 text-sky-300"><i class="fa-solid fa-envelope"></i></span>
+                    <input type="email" name="email" value="<?= html_escape($user['email'])?>" required
+                         class="pl-10 w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
+                  </div>
+                </div>
 
-            <div class="flex gap-3 items-center">
-              <button type="submit"
-                  class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-400 hover:from-blue-500 hover:to-sky-500 text-white font-semibold py-3 rounded-xl shadow-lg transition duration-200">
-                <i class="fa-solid fa-save mr-2"></i> Update Now
-              </button>
+                <div class="mt-4">
+                  <label class="block text-sky-100 mb-1 font-medium">Password <span class="text-xs text-sky-200">(leave blank to keep current)</span></label>
+                  <div class="relative">
+                    <span class="absolute left-3 top-3 text-sky-300"><i class="fa-solid fa-key"></i></span>
+                    <input type="password" name="password" value=""
+                         class="pl-10 w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
+                  </div>
+                </div>
 
-              <?php
-                $back_q = $q_param !== '' ? '?q=' . urlencode($q_param) . '&page=' . $current_page : '?page=' . $current_page;
-              ?>
-              <a href="<?= site_url('') . $back_q ?>"
-                 class="px-4 py-3 bg-gray-700 text-gray-200 rounded-xl hover:bg-gray-600 transition duration-200">Cancel</a>
+                <div class="mt-6 flex gap-3 items-center">
+                  <button type="submit" class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-400 hover:from-blue-500 hover:to-sky-500 text-white font-semibold py-3 rounded-xl shadow-lg transition duration-200">
+                    <i class="fa-solid fa-save mr-2"></i> Update Now
+                  </button>
+
+                  <?php $back_q = $q_param !== '' ? '?q=' . urlencode($q_param) . '&page=' . $current_page : '?page=' . $current_page; ?>
+                  <a href="<?= site_url('') . $back_q ?>" class="px-4 py-3 bg-[rgba(2,35,49,0.6)] text-sky-100 rounded-xl hover:bg-[rgba(2,35,49,0.8)] transition duration-200">Cancel</a>
+                </div>
+              </div>
             </div>
           </form>
         </div>
